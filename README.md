@@ -5,6 +5,7 @@ The portfolio for __Language Analytics S22__ consists of 5 projects (4 class ass
 The initial assignment was made partly in collaboration with others from the course, but the final code is my own. I made several adjustments to the code since I first handed it in.
 
 Utils made by Ross.
+https://www.kaggle.com/code/mdzisun/language-detection-system
 
 ## 2. Methods
 ### Main task
@@ -30,7 +31,7 @@ sudo apt install -y libtesseract-dev
 ```
 
 ### Get the data
-
+Download here: https://www.kaggle.com/datasets/zarajamshaid/language-identification-datasst.
 ### Main task
 
 
