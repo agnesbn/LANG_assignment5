@@ -44,3 +44,32 @@ Download here: https://www.kaggle.com/datasets/zarajamshaid/language-identificat
 
 
 ## 4. Discussion of results
+
+
+
+I tested the prediction on 4-5 lines of text from wikipedia articles in the given languages. 
+- Arabic: [https://ar.wikipedia.org/wiki/اللغة_العربية](https://ar.wikipedia.org/wiki/اللغة_العربية)
+- Chinese: [https://zh.wikipedia.org/zh-cn/汉语](https://zh.wikipedia.org/zh-cn/汉语)
+    - the article is in Simplified Chinese, though the Chinese data from Kaggle seems to include both Traditional and Simplified Chinese – as far as I could tell from checking a few of the texts using a [tool to tell if a text is simplified or traditional Chinese](https://www.chineseconverter.com/en/convert/find-out-if-simplified-or-traditional-chinese).
+    - as Japanese uses Traditional Chinese characters, the predictions are likely to be most accurate when using simplified Chinese input.
+- Dutch: [https://nl.wikipedia.org/wiki/Nederlands](https://nl.wikipedia.org/wiki/Nederlands)
+- English: https://en.wikipedia.org/wiki/English_language
+- Estonian: https://et.wikipedia.org/wiki/Eesti_keel
+- French
+- Hindi
+- Indonesian
+- Japanese
+- Korean
+- Latin
+- Persian
+- Portugese
+- Pushto
+- Romanian
+- Russian
+- Spanish
+- Swedish
+- Tamil
+- Thai
+- Turkish
+- Urdu
+
