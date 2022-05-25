@@ -13,37 +13,10 @@ and
 https://www.kaggle.com/code/dariussingh/nlp-dl-language-identification
 
 ## 2. Methods
-### Main task
+### Train language identification model
 
 
-### Bonus task
-
-
-
-## 3. Usage
-### Install packages
-Before running the script, you have to install the relevant packages. To do this, run the following from the command line:
-```
-sudo apt update
-pip install --upgrade pip
-pip install pandas numpy scikit-learn tensorflow nltk wordcloud
-```
-
-### Get the data
-Download here: https://www.kaggle.com/datasets/zarajamshaid/language-identification-datasst.
-### Main task
-
-
-### Bonus task
-
-
-## 4. Discussion of results
-**Language counts**                           |**Confusion matrix**                           |**History plot**
-:--------------------------------------------:|:---------------------------------------------:|:---------------------------------------:
-![](out/model_evaluations/language_counts.png)|![](out/model_evaluations/confusion_matrix.png)|  ![](out/model_evaluations/history_plot.png)
-    
-
-
+### Perform language prediction
 I tested the prediction on 4-5 lines of text from wikipedia articles in the given languages. 
 - Arabic: [https://ar.wikipedia.org/wiki/اللغة_العربية](https://ar.wikipedia.org/wiki/اللغة_العربية).
 - Chinese: [https://zh.wikipedia.org/zh-cn/汉语](https://zh.wikipedia.org/zh-cn/汉语).
@@ -69,4 +42,41 @@ I tested the prediction on 4-5 lines of text from wikipedia articles in the give
 - Thai: [https://th.wikipedia.org/wiki/ภาษาไทย](https://th.wikipedia.org/wiki/ภาษาไทย).
 - Turkish: [https://tr.wikipedia.org/wiki/Türkçe](https://tr.wikipedia.org/wiki/Türkçe).
 - Urdu: [https://ur.wikipedia.org/wiki/اردو](https://ur.wikipedia.org/wiki/اردو).
+
+
+
+
+## 3. Usage
+### Install packages
+Before running the script, you have to install the relevant packages. To do this, run the following from the command line:
+```
+sudo apt update
+pip install --upgrade pip
+pip install pandas numpy scikit-learn tensorflow nltk wordcloud
+```
+
+### Get the data
+Download here: https://www.kaggle.com/datasets/zarajamshaid/language-identification-datasst.
+### Main task
+
+
+### Bonus task
+
+
+## 4. Discussion of results
+
+As you can tell from the plot of the number of samples per language there were a few that contained duplicates.
+
+![](out/model_evaluations/language_counts.png)
+
+
+
+
+The confusion matric
+![](out/model_evaluations/confusion_matrix.png)
+
+
+The history plot
+![](out/model_evaluations/history_plot.png)
+
 
