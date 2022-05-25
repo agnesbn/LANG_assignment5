@@ -42,6 +42,9 @@ import argparse
 def parse_args():
     # initialise argument parser
     ap = argparse.ArgumentParser()
+    """
+    Data saving arguments
+    """
     # plot name argument
     ap.add_argument("-p",
                     "--plot_name",
@@ -62,6 +65,10 @@ def parse_args():
                     "--lc_plot_name", 
                     default="language_counts", 
                     help="The name you wish to save the language counts plot under")
+    
+    """
+    Hyperparameters for model
+    """
     # epoch argument
     ap.add_argument("-e",
                     "--epochs",
