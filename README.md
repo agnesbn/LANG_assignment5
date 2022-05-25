@@ -38,7 +38,10 @@ Download here: https://www.kaggle.com/datasets/zarajamshaid/language-identificat
 
 
 ## 4. Discussion of results
-
+**Language counts**                           |**Confusion matrix**                           |**History plot**
+:--------------------------------------------:|:---------------------------------------------:|:---------------------------------------:
+![](out/model_evaluations/language_counts.png)|![](out/model_evaluations/confusion_matrix.png)|  ![](out/model_evaluations/history_plot.png)
+    
 
 
 I tested the prediction on 4-5 lines of text from wikipedia articles in the given languages. 
