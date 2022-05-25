@@ -1,0 +1,34 @@
+Classification report
+Data: Language Identification dataset
+Epochs: 5
+Batch size: 256
+Patience of Early Stopping: 1
+Monitor metric: accuracy
+              precision    recall  f1-score   support
+
+      Arabic       1.00      1.00      1.00       209
+     Chinese       0.88      0.50      0.64       206
+       Dutch       1.00      0.98      0.99       190
+     English       0.88      1.00      0.93       214
+    Estonian       1.00      0.98      0.99       229
+      French       0.96      1.00      0.98       213
+       Hindi       1.00      0.99      1.00       190
+  Indonesian       1.00      0.99      0.99       200
+    Japanese       0.62      0.94      0.74       189
+      Korean       1.00      0.98      0.99       206
+       Latin       0.97      0.94      0.95       178
+     Persian       1.00      1.00      1.00       177
+   Portugese       0.99      0.98      0.99       194
+      Pushto       1.00      0.96      0.98       196
+    Romanian       1.00      0.99      1.00       173
+     Russian       0.99      0.99      0.99       206
+     Spanish       1.00      0.96      0.98       204
+     Swedish       1.00      1.00      1.00       203
+       Tamil       1.00      0.99      0.99       197
+        Thai       1.00      0.98      0.99       190
+     Turkish       1.00      1.00      1.00       206
+        Urdu       1.00      0.98      0.99       202
+
+    accuracy                           0.96      4372
+   macro avg       0.97      0.96      0.96      4372
+weighted avg       0.97      0.96      0.96      4372
