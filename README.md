@@ -22,14 +22,15 @@ Using the data, I wish to perform two tasks. Firstly, I train a neural network m
 ### Train language classification model
 The [`language_classification.py`](https://github.com/agnesbn/LANG_assignment5/blob/main/src/language_classification.py) script loads and reads the input CSV. Before training the model, a number of clean-up functions are run: duplicate sentences are removed, nonalphanumeric characters are removed, the text is tokenised, and characters are lowered. To get an overview of the data after these transformations, a plot of the number of texts per language is saved.
 
-Then, the target labels are encoded using ´LabelEncoder()` and the texts are vectorised using `CountVectorizer()`. Now, a train/test split is performed and the data is converted into `NumPy` arrays. An `EarlyStopping()` parameter is configured, so that the model will stop training, if the given metric does not improve for a given number of epochs. Now, the model is created, compiled and trained. The test data is predicted using the model and the results are saved in the form of a confusion matrix, a history plot, and a classification report. The trained model itself is also saved as a `H5`-file, so that it can be loaded and used for classification.
+Then, the target labels are encoded using `LabelEncoder()` and the texts are vectorised using `CountVectorizer()`. Now, a train/test split is performed and the data is converted into `NumPy` arrays. An `EarlyStopping()` parameter is configured, so that the model will stop training, if the given metric does not improve for a given number of epochs. Now, the model is created, compiled and trained. The test data is predicted using the model and the results are saved in the form of a confusion matrix, a history plot, and a classification report. The trained model itself is also saved as a `H5`-file, so that it can be loaded and used for classification.
 
 ### Perform language prediction
-I tested the prediction on 4-5 lines of text from wikipedia articles in the given languages. 
+The [`language_prediction.py`](https://github.com/agnesbn/LANG_assignment5/blob/main/src/language_prediction.py) script runs the same cleaning and processing functions as the `language_classification.py` script to have the data labels encoded and the texts vectorised again. Then, the model H5 is loaded and it is used to predict which language occurs in a given input text. The most likely candidate is printed in the command line and an output TXT with the prediction and the original text is saved.
+
+To test the script, I grabbed the first 4-5 lines from a Wikipedia page in each language. I decided to go with the page about the given language, i.e. the page for the "English Language" in English, for "Français" in French etc. The sources for the testing data are:
 - Arabic: [https://ar.wikipedia.org/wiki/اللغة_العربية](https://ar.wikipedia.org/wiki/اللغة_العربية).
 - Chinese: [https://zh.wikipedia.org/zh-cn/汉语](https://zh.wikipedia.org/zh-cn/汉语).
     - the article is in Simplified Chinese, though the Chinese data from Kaggle seems to include both Traditional and Simplified Chinese – as far as I could tell from checking a few of the texts using a [tool to tell if a text is simplified or traditional Chinese](https://www.chineseconverter.com/en/convert/find-out-if-simplified-or-traditional-chinese).
-    - as Japanese uses Traditional Chinese characters, the predictions are likely to be most accurate when using simplified Chinese input.
 - Dutch: [https://nl.wikipedia.org/wiki/Nederlands](https://nl.wikipedia.org/wiki/Nederlands).
 - English: [https://en.wikipedia.org/wiki/English_language](https://en.wikipedia.org/wiki/English_language).
 - Estonian: [https://et.wikipedia.org/wiki/Eesti_keel](https://et.wikipedia.org/wiki/Eesti_keel).
@@ -50,8 +51,7 @@ I tested the prediction on 4-5 lines of text from wikipedia articles in the give
 - Thai: [https://th.wikipedia.org/wiki/ภาษาไทย](https://th.wikipedia.org/wiki/ภาษาไทย).
 - Turkish: [https://tr.wikipedia.org/wiki/Türkçe](https://tr.wikipedia.org/wiki/Türkçe).
 - Urdu: [https://ur.wikipedia.org/wiki/اردو](https://ur.wikipedia.org/wiki/اردو).
-(All Wikipedia pages were accessed and gathered 24 May 2022)
-
+(All pages were accessed 24 May 2022)
 
 ## 3. Usage
 ### Install packages
@@ -105,19 +105,19 @@ __Optional input__:
 The results are printed in the command line and saved in [`out/language_predictions`](https://github.com/agnesbn/LANG_assignment5/tree/main/out/language_predictions).
 
 ## 4. Discussion of results
+### Language classification
 
-As you can tell from the plot of the number of samples per language there were a few that contained duplicates.
+After the initial clean-up functions, a plot of the number of texts for each language was saved. As you can tell from the plot, there were a few that contained duplicates which were removed.
 
 ![](out/model_evaluations/language_counts.png)
 
+After training the model, a confusion matrix, a classification report, and a history plot were saved. When running the code with the default hyperparameters (Epochs: 5, Batch size: 256, Patience of Early Stopping: 1, Monitor metric: accuracy), an accuracy of 96% was reached. Noticably, all languages except Chinese and Japanese scored higher than 90% in accuracy, where Japanese only scored 74% and Chinese scored as low as 64%. As we can see from the confusion matrix, the Chinese texts were often categorised as Japanese. This probably has something to do with the fact that the Chinese data consist of both Traditional and Simplified Chinese script. As Japanese uses Traditional Chinese characters, the model most likely has a harder time distinguishing Chinese from Japanese, when it is written with Traditional characters.
 
+__The confusion matrix__                       |  **The history plot**
+:---------------------------------------------:|:-------------------------------------------:
+![](out/model_evaluations/confusion_matrix.png)|  ![](out/model_evaluations/history_plot.png)
 
+The history plot suggests that a longer training time would most likely not improve the results, as the loss and accuracy curve for the training data already begins to flatten after the first epoch. 
 
-The confusion matrix
-![](out/model_evaluations/confusion_matrix.png)
-
-
-The history plot
-![](out/model_evaluations/history_plot.png)
-
-
+### Language prediction
+When running the language prediction script on the language examples data, that I collected, all languages were correctly identified. This was expected for most of the languages, but the fact that the Chinese data was correctly identified probably has to do with the fact that the text I chose was written in Simplified Chinese. When I tried doing the prediction for Traditional Chinese, it was more often than not classified as Japanese.
