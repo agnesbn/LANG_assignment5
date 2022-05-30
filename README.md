@@ -53,7 +53,19 @@ pip install pandas numpy scikit-learn tensorflow nltk wordcloud
 - Place the data CSV in the `in/data` folder, so that the path to the input data is `in/data/dataset.csv`.
 
 ### Language classification
+Make sure your current directory is `LANG_assignment5` and then, run:
+```
+python src/language_classification.py (--plot_name <PLOT NAME> --report_name <REPORT NAME> 
+--cm_name <CONFUSION MATRIX NAME> --lc_plot_name <LANGUAGE COUNTS PLOT NAME>)
+```
 
+__Input__:
+- `<PLOT NAME>`: The name you wish to save the history plot under. The default is `history_plot`.
+- `<REPORT NAME>`: The name you wish to save the classification report under. The default is `classification_report`.
+- `<CONFUSION MATRIX NAME>`: The name you wish to save the confusion matrix under. The default is `confusion_matrix`.
+- `<LANGUAGE COUNTS PLOT NAME>`: The name you wish to save the language counts plot under. The default is `language_counts`. 
+
+The classification report and the different result plots are saved in [`out/model_evaluations`](https://github.com/agnesbn/LANG_assignment5/tree/main/out/model_evaluations) and the model is saved as `language_identifcation_model.h5` in [`utils`](https://github.com/agnesbn/LANG_assignment5/tree/main/utils).
 
 ### Language prediction
 - To do the language prediction, place a collection of TXT files which contain the different languages in the `in/language_examples` folder.
@@ -80,7 +92,7 @@ As you can tell from the plot of the number of samples per language there were a
 
 
 
-The confusion matric
+The confusion matrix
 ![](out/model_evaluations/confusion_matrix.png)
 
 
