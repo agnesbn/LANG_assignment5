@@ -7,7 +7,7 @@ This final project was not made in collaboration with others from the course. I 
 ## 2. Methods
 Using the data, I wish to perform two tasks. First, I train a neural network model to do language classification. Second, I load the model that has been trained and use to do classification on completely new and unseen data. Thus, the order that the code is run is important – first, the 
 
-### Train language identification model
+### Train language classification model
 
 
 ### Perform language prediction
@@ -39,7 +39,6 @@ I tested the prediction on 4-5 lines of text from wikipedia articles in the give
 (All Wikipedia pages were accessed and gathered 24 May 2022)
 
 
-
 ## 3. Usage
 ### Install packages
 Before running the script, you have to install the relevant packages. To do this, run the following from the command line:
@@ -50,12 +49,27 @@ pip install pandas numpy scikit-learn tensorflow nltk wordcloud
 ```
 
 ### Get the data
-Download here: https://www.kaggle.com/datasets/zarajamshaid/language-identification-datasst.
-### Main task
+- Download the data here: https://www.kaggle.com/datasets/zarajamshaid/language-identification-datasst.
+- Place the data CSV in the `in/data` folder, so that the path to the input data is `in/data/dataset.csv`.
+
+### Language classification
 
 
-### Bonus task
+### Language prediction
+- To do the language prediction, place a collection of TXT files which contain the different languages in the `in/language_examples` folder.
+    - The specific files I used to test this on will be provided on `Digital Eksamen`.
+- After the data has been placed in the folder, make sure your current directory is `LANG_assignment5` and from the command line, run:
+```
+python src/language_prediction.py --input <INPUT> (--text_name <TEXT NAME> --directory_name <DIRECTORY NAME>)
+```
+__Required input__:
+- `<INPUT>`: Whether your input is a directory or a single file. To run language prediction for all files in a directory, put in `directory`, and to do the task for a single file, put in `single_text`.
 
+__Optional input__:
+- `<TEXT NAME>`: The name of the TXT file, you wish to run the language prediction on (if relevant). The default is `arabic_wiki.txt`.
+- `<DIRECTORY NAME>`: The name of the directory with the files, that you wish to run the language prediction on (if relevant). The default is `language_examples`.
+
+The results are printed in the command line and saved in [`out/language_predictions`](https://github.com/agnesbn/LANG_assignment5/tree/main/out/language_predictions).
 
 ## 4. Discussion of results
 
