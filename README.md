@@ -2,15 +2,7 @@
 The portfolio for __Language Analytics S22__ consists of 5 projects (4 class assignments and 1 self-assigned project). This is the __fifth and final assignment__ in the portfolio. 
 
 ## 1. Contribution
-The initial assignment was made partly in collaboration with others from the course, but the final code is my own. I made several adjustments to the code since I first handed it in.
-
-Utils made by Ross.
-
-https://www.kaggle.com/code/mdzisun/language-detection-system
-
-and
-
-https://www.kaggle.com/code/dariussingh/nlp-dl-language-identification
+This final project was not made in collaboration with others from the course. I did, however, find a lot of inspiration for how to work with the data from [this Kaggle notebook](https://www.kaggle.com/code/dariussingh/nlp-dl-language-identification).
 
 ## 2. Methods
 Using the data, I wish to perform two tasks. First, I train a neural network model to do language classification. Second, I load the model that has been trained and use to do classification on completely new and unseen data. Thus, the order that the code is run is important – first, the 
@@ -44,7 +36,7 @@ I tested the prediction on 4-5 lines of text from wikipedia articles in the give
 - Thai: [https://th.wikipedia.org/wiki/ภาษาไทย](https://th.wikipedia.org/wiki/ภาษาไทย).
 - Turkish: [https://tr.wikipedia.org/wiki/Türkçe](https://tr.wikipedia.org/wiki/Türkçe).
 - Urdu: [https://ur.wikipedia.org/wiki/اردو](https://ur.wikipedia.org/wiki/اردو).
-
+(All Wikipedia pages were accessed and gathered 24 May 2022)
 
 
 
