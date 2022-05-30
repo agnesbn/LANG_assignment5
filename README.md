@@ -4,11 +4,25 @@ The portfolio for __Language Analytics S22__ consists of 5 projects (4 class ass
 ## 1. Contribution
 This final project was not made in collaboration with others from the course. I did, however, find a lot of inspiration for how to work with the data from [this Kaggle notebook](https://www.kaggle.com/code/dariussingh/nlp-dl-language-identification).
 
+As mentioned in LANG_assignment4, the [`save_history()`](https://github.com/agnesbn/LANG_assignment5/blob/e0608bfa93e6d0e7654817bd1bce0d4c5dfa2473/src/language_classification.py#L100) function was inspired by one provided to us by Ross during the course.
+
+The data comes from [Kaggle](https://www.kaggle.com/datasets/zarajamshaid/language-identification-datasst). 
+The data is comprised of 22
+
+The data is a selection [WiLI-2018](https://www.kaggle.com/datasets/zarajamshaid/language-identification-datasst), the Wikipedia language identification benchmark dataset, and contains 235000 paragraphs of 235 languages. 
+Each language in this dataset contains 1000 rows/paragraphs.
+
+After data selection and preprocessing I used the 22 selective languages from the original dataset Which Includes following Languages
+
+
+
 ## 2. Methods
-Using the data, I wish to perform two tasks. First, I train a neural network model to do language classification. Second, I load the model that has been trained and use to do classification on completely new and unseen data. Thus, the order that the code is run is important – first, the 
+Using the data, I wish to perform two tasks. Firstly, I train a neural network model to do language classification based on the data and secondly, I load the trained model and use it to do classification on completely new and unseen data. Thus, the order that the code is run is important – first, run the `language_classification.py` script and make sure the model is saved in `utils` and then run `language_prediction.py`.
 
 ### Train language classification model
+The [`language_classification.py`](https://github.com/agnesbn/LANG_assignment5/blob/main/src/language_classification.py) script loads and reads the input CSV. Before training the model, a number of clean-up functions are run: duplicate sentences are removed, nonalphanumeric characters are removed, the text is tokenised, and characters are lowered. To get an overview of the data after these transformations, a plot of the number of texts per language is saved.
 
+Then, the target labels are encoded using ´LabelEncoder()` and the texts are vectorised using `CountVectorizer()`. Now, a train/test split is performed and the data is converted into `NumPy` arrays. An `EarlyStopping()` parameter is configured, so that the model will stop training, if the given metric does not improve for a given number of epochs. Now, the model is created, compiled and trained. The test data is predicted using the model and the results are saved in the form of a confusion matrix, a history plot, and a classification report. The trained model itself is also saved as a `H5`-file, so that it can be loaded and used for classification.
 
 ### Perform language prediction
 I tested the prediction on 4-5 lines of text from wikipedia articles in the given languages. 
@@ -56,16 +70,23 @@ pip install pandas numpy scikit-learn tensorflow nltk wordcloud
 Make sure your current directory is `LANG_assignment5` and then, run:
 ```
 python src/language_classification.py (--plot_name <PLOT NAME> --report_name <REPORT NAME> 
---cm_name <CONFUSION MATRIX NAME> --lc_plot_name <LANGUAGE COUNTS PLOT NAME>)
+--cm_name <CONFUSION MATRIX NAME> --lc_plot_name <LANGUAGE COUNTS PLOT NAME> -- epochs <EPOCHS>
+--batch_size <BATCH SIZE> --es_patience <EARLY STOPPING PATIENCE> --monitor_metric <MONITORED METRIC>)
 ```
 
-__Input__:
+__Data saving arguments__:
 - `<PLOT NAME>`: The name you wish to save the history plot under. The default is `history_plot`.
 - `<REPORT NAME>`: The name you wish to save the classification report under. The default is `classification_report`.
 - `<CONFUSION MATRIX NAME>`: The name you wish to save the confusion matrix under. The default is `confusion_matrix`.
 - `<LANGUAGE COUNTS PLOT NAME>`: The name you wish to save the language counts plot under. The default is `language_counts`. 
 
-The classification report and the different result plots are saved in [`out/model_evaluations`](https://github.com/agnesbn/LANG_assignment5/tree/main/out/model_evaluations) and the model is saved as `language_identifcation_model.h5` in [`utils`](https://github.com/agnesbn/LANG_assignment5/tree/main/utils).
+__Hyperparameters for model__:
+- `<EPOCHS>`: The number of epochs the model runs for. The default is `8`.
+- `<BATCH SIZE>`: The size of batches the data is processed by. The default is `256`.
+- `<EARLY STOPPING PATIENCE>`: The patience of the early stopping callback function, i.e. how many epochs the model can go without improving before the training is stopped. The default is `1`. 
+- `<MONITORED METRIC>`: The metric that the early stopping callback function monitors. The default is `accuracy`.
+
+The classification report and the different result plots are saved in [`out/model_evaluations`](https://github.com/agnesbn/LANG_assignment5/tree/main/out/model_evaluations) and the model itself is saved as `language_identifcation_model.h5` in [`utils`](https://github.com/agnesbn/LANG_assignment5/tree/main/utils).
 
 ### Language prediction
 - To do the language prediction, place a collection of TXT files which contain the different languages in the `in/language_examples` folder.
