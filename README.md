@@ -13,6 +13,8 @@ and
 https://www.kaggle.com/code/dariussingh/nlp-dl-language-identification
 
 ## 2. Methods
+Using the data, I wish to perform two tasks. First, I train a neural network model to do language classification. Second, I load the model that has been trained and use to do classification on completely new and unseen data. Thus, the order that the code is run is important – first, the 
+
 ### Train language identification model
 
 
