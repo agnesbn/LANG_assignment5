@@ -36,7 +36,7 @@ def parse_args():
     ap.add_argument("-t",
                     "--text_name",
                     type=str,
-                    default="arabic_wiki",
+                    default="arabic_wiki.txt",
                     help = "The name of the text you want to work with")
     # directory name
     ap.add_argument("-d",
